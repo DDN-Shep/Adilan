@@ -1,0 +1,13 @@
+.section.contact
+  .container
+    form
+      .row
+        .six.columns
+          label(for='client-name') Your name
+          input#client-name.u-full-width(type='email', placeholder='John Doe')
+        .six.columns
+          label(for='email-address') Your email
+          input#email-address.u-full-width(type='email', placeholder='john-doe@mailbox.com')
+      label(for='client-message') Your message
+      textarea#client-message.u-full-width(placeholder='Hi Adil, I was wondering…')
+      input.button-primary(type='submit', value='Submit')
