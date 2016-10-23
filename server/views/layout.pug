@@ -8,7 +8,7 @@ html
     meta(name='keyword', content='')
     meta(name='author', content='Andrew Sheppard')
 
-    title Adilan Villas & Apartments
+    title Adilan Villas &amp; Apartments
 
     link(rel='shortcut icon', href='favicon.ico')
 
@@ -19,7 +19,7 @@ html
     link(rel='stylesheet', href='/css/main.min.css')
 
     include ./includes/compatibility.pug
-  body.overlay
+  body
     header
       include ./includes/navbar.pug
 
@@ -31,17 +31,16 @@ html
       include ./sections/booking.pug
       include ./sections/contact.pug
 
-    .page
+      footer &copy; 2017 Adilan Villas &amp; Apartments
 
-    footer
-
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.36/system-polyfills.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.36/system.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/page.js/1.7.1/page.min.js')
-    script(src='/js/peppermint.min.js', type='text/javascript')
-    script(src='/js/jquery-ui.min.js', type='text/javascript')
+    script(src='/js/peppermint.min.js')
+    script(src='/js/jquery-ui.min.js')
+    script(src='/js/scroll-in.min.js')
     script.
       (window.adilan = window.adilan || {}).config = (function() {
         'use strict';

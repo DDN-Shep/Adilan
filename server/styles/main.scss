@@ -50,10 +50,24 @@ nav {
   }
 }
 
-header {
-  position: fixed;
-  width: 100%;
-  z-index: 9;
+body {
+  > header, > main, > footer {
+    position: relative;
+  }
+
+  > header {
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+  }
+
+  > main > footer {
+    display: block;
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    color: #fff;
+  }
 }
 
 .navbar {
@@ -142,6 +156,12 @@ header {
     bottom: 2em;
   }
 
+  .fb-like {
+    position: absolute;
+    right: 14em;
+    bottom: 2em;
+  }
+
   @media (min-width: 550px) {
     padding: 12em 0;
   }
@@ -201,6 +221,27 @@ header {
 
 .card.villas > .heading:before {
   background-image: url('/img/villas.jpg');
+}
+
+.card.melon-grove > .heading:before {
+  background-image: url('/img/melon-grove.jpg');
+}
+
+.card.villa-ayberk > .heading:before {
+  background-image: url('/img/villa-ayberk.jpg');
+}
+
+.card.villa-adil > .heading:before {
+  background-image: url('/img/villa-adil.jpg');
+}
+
+.card.restaurant > .heading:before {
+  background-image: url('/img/restaurant.jpg');
+}
+
+.offset-by-one-quarter.column,
+.offset-by-one-quarter.columns {
+  margin-left: 17.3333333333%;
 }
 
 .ui-datepicker {

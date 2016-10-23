@@ -14,7 +14,7 @@ $(function() {
 
   $testimonials.on('mouseover', peppermint.pause).on('mouseout', peppermint.start);
 
-  var navbar = require('./components/navbar.min.js');
+  var navbar = require('./navbar.min.js');
 
   (function initialise() {
     navbar('/');

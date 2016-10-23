@@ -54,6 +54,9 @@ gulp.task('images', () => {
 
 gulp.task('scripts', ['eslint'], () => {
   gulp.src('./lib/**/*.js')
+    .pipe(rename({
+      dirname: ''
+    }))
     .pipe(gulp.dest('./client/js'));
 
   gulp.src('./server/scripts/**/*.js')
@@ -61,6 +64,7 @@ gulp.task('scripts', ['eslint'], () => {
       beautify: settings.pretty
     }))
     .pipe(rename({
+      dirname: '',
       suffix: '.min'
     }))
     .pipe(gulp.dest('./client/js'));
@@ -68,6 +72,9 @@ gulp.task('scripts', ['eslint'], () => {
 
 gulp.task('styles', () => {
   gulp.src('./lib/**/*.css')
+    .pipe(rename({
+      dirname: ''
+    }))
     .pipe(gulp.dest('./client/css'));
 
   gulp.src('./server/styles/**/*.scss')
@@ -80,6 +87,7 @@ gulp.task('styles', () => {
       keepBreaks: settings.pretty
     }))
     .pipe(rename({
+      dirname: '',
       suffix: '.min'
     }))
     .pipe(gulp.dest('./client/css'));
@@ -97,13 +105,6 @@ gulp.task('views', () => {
       basename: 'index'
     }))
     .pipe(gulp.dest('./client'));
-/*
-  gulp.src('./server/views/partials/**        /*.pug')
-    .pipe(pug({
-      pretty: settings.pretty
-    }))
-    .pipe(gulp.dest('./client/partials'));
-*/
 });
 
 gulp.task('sitemap', () => {
