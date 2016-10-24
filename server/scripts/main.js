@@ -1,7 +1,7 @@
 $(function() {
   'use strict';
 
-  $('.section > *').addClass('hide').scrollIn({
+  $('section:not(.hero) > *').addClass('hide').scrollIn({
     classes: 'show fade-in-up'
   });
 
@@ -12,18 +12,18 @@ $(function() {
     speed: 500
   }), peppermint = $testimonials.data('Peppermint');
 
-  $testimonials.on('mouseover', peppermint.pause).on('mouseout', peppermint.start);
+  $testimonials.on('mouseover', peppermint.pause).on('mouseout', peppermint.start); // BUG: Need specific selectors for each carousel
 
   var navbar = require('./navbar.min.js');
 
   function scrollTo(path) {
     if (!path) return;
 
-    var $section = $('.section.' + (path.replace('/', '') || 'welcome'));
+    var $section = $('section.' + (path.replace('/', '') || 'hero'));
 
     if ($section.length) $(document.body).animate({
       scrollTop: $section.offset().top
-    }, 500);
+    }, 750);
   }
 
   (function initialise() {

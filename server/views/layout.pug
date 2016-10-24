@@ -25,10 +25,10 @@ html
 
     main
       include ./sections/hero.pug
-      include ./sections/introduction.pug
+      include ./sections/welcome.pug
       include ./sections/testimonials.pug
-      include ./sections/accommodation.pug
-      include ./sections/booking.pug
+      include ./sections/accommodation-and-restaurant.pug
+      //include ./sections/booking.pug
       include ./sections/contact.pug
 
       footer &copy; 2017 Adilan Villas &amp; Apartments
@@ -75,4 +75,5 @@ html
           System.import('main.min.js');
       })();
 
+    include ./includes/google-recaptcha.pug
     include ./includes/google-analytics.pug

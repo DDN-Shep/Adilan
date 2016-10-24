@@ -1,13 +1,31 @@
-.section.contact
+section.contact-us
   .container
-    form
-      .row
-        .six.columns
-          label(for='client-name') Your name
-          input#client-name.u-full-width(type='email', placeholder='John Doe')
-        .six.columns
-          label(for='email-address') Your email
-          input#email-address.u-full-width(type='email', placeholder='john-doe@mailbox.com')
-      label(for='client-message') Your message
-      textarea#client-message.u-full-width(placeholder='Hi Adil, I was wondering…')
-      input.button-primary(type='submit', value='Submit')
+    h3.heading Why not send us a message...
+    .row
+      .eight.columns
+        form
+          .row
+            .six.columns
+              label(for='client-name') Your name
+              input#client-name.u-full-width(type='text', placeholder='John Doe')
+            .six.columns
+              label(for='email-address') Your email
+              input#email-address.u-full-width(type='email', placeholder='john-doe@mailbox.com')
+          label(for='client-message') Your message
+          textarea#client-message.u-full-width(placeholder='Hi Adil, I was wondering…')
+          button.button-primary(type='submit') Send Message
+          #recaptcha
+      .four.columns
+        ul.fa-ul
+          li
+            a(href='https://www.facebook.com/profile.php?id=100009330233643', target='_blank')
+              i.fa.fa-li.fa-facebook-square.fa-2x
+              span Find us on facebook
+          li
+            a(href='mailto:adilanvillas@gmail.com;adil.tugcu@gmail.com;mithattugcu@ttmail.com')
+              i.fa.fa-li.fa-envelope-o.fa-2x
+              span Email us directly
+          li
+            a(href='tel:+902522845053')
+              i.fa.fa-li.fa-phone.fa-2x
+              span +90 252-284-5053
