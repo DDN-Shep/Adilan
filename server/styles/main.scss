@@ -34,7 +34,7 @@ body {
   }
 }
 
-a, a img {
+a, a img, li, li a {
   outline: 0;
   border: 0;
   text-decoration: none;
@@ -167,6 +167,59 @@ body {
   }
 }
 
+.section.welcome {
+  .peppermint {
+    float: right;
+    width: 15em;
+    margin-left: 1em;
+    margin-bottom: 0;
+
+    .pepperint-slides, .peppermint-dots {
+      padding: 0
+    }
+
+    figure {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 10em;
+      width: 15em;
+
+      &:first-child {
+        background-image: url('/img/DSC_0101.jpg');
+      }
+
+      &:nth-child(2) {
+        background-image: url('/img/DSC_0102.jpg');
+      }
+
+      &:nth-child(3) {
+        background-image: url('/img/DSC_0103.jpg');
+      }
+
+      &:nth-child(4) {
+        background-image: url('/img/DSC_0104.jpg');
+      }
+
+      &:nth-child(5) {
+        background-image: url('/img/DSC_0105.jpg');
+      }
+
+      &:last-child {
+        background-image: url('/img/DSC_0109.jpg');
+      }
+    }
+  }
+
+  .peppermint-dots > li:not(.peppermint-active-dot) > span {
+    background-color: #222;
+  }
+
+  .peppermint-dots > li.peppermint-active-dot > span {
+    border-color: #222;
+  }
+}
+
 .section.testimonials {
   background-image: url('/img/IMG-20160928-WA0005.jpg');
   background-size: cover;
@@ -239,9 +292,11 @@ body {
   background-image: url('/img/restaurant.jpg');
 }
 
-.offset-by-one-quarter.column,
-.offset-by-one-quarter.columns {
-  margin-left: 17.3333333333%;
+@media (min-width: 550px) {
+  .offset-by-one-quarter.column,
+  .offset-by-one-quarter.columns {
+    margin-left: 17.3333333333%;
+  }
 }
 
 .ui-datepicker {

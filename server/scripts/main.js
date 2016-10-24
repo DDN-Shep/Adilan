@@ -16,6 +16,16 @@ $(function() {
 
   var navbar = require('./navbar.min.js');
 
+  function scrollTo(path) {
+    if (!path) return;
+
+    var $section = $('.section.' + (path.replace('/', '') || 'welcome'));
+
+    if ($section.length) $(document.body).animate({
+      scrollTop: $section.offset().top
+    }, 500);
+  }
+
   (function initialise() {
     navbar('/');
 
@@ -26,8 +36,10 @@ $(function() {
         if (typeof next === 'function') next(context);
       });
     });
-    page('*', function() {
+    page('*', function(context) {
       console.log('404', arguments);
+
+      scrollTo(context.path);
     });
     page();
   })();
