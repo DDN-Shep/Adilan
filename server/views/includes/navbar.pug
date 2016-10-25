@@ -1,13 +1,11 @@
-﻿.navbar
+﻿.navbar(tabindex='0')
+  a.nav-toggle.nav-open(href='#')
+    i.fa.fa-bars.fa-fw
+  a.nav-toggle.nav-close(href='#')
+    i.fa.fa-close.fa-fw
   nav
-    ul.nav-list
-      li.nav-item
-        a(href='/') Home
-      li.nav-item
-        a(href='/welcome') Welcome
-      li.nav-item
-        a(href='/testimonials') Testimonials
-      li.nav-item
-        a(href='/accommodation-and-restaurant') Accommodation &amp; Restaurant
-      li.nav-item
-        a(href='/contact-us') Contact Us
+    a(href='/') Home
+    a(href='/welcome') Welcome
+    a(href='/testimonials') Testimonials
+    a(href='/accommodation-and-restaurant') Accommodation &amp; Restaurant
+    a(href='/contact-us') Contact Us

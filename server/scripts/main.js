@@ -1,46 +1,65 @@
 $(function() {
   'use strict';
 
-  $('section:not(.hero) > *').addClass('hide').scrollIn({
-    classes: 'show fade-in-up'
-  });
+  (function initialiseNavbar() {
+    var timer,
+        $navbar = $('.navbar').on('focusout', function() {
+          timer = setTimeout(function() {
+            $navbar.removeClass('open');
+          }, 100);
+        }).on('focusin', function(e) {
+          if ($(e.target, $navbar).length) clearTimeout(timer);
+        });
 
-  var $testimonials = $('.peppermint').Peppermint({
-    dots: true,
-    slideshow: true,
-    slideshowInterval: 5000,
-    speed: 500
-  }), peppermint = $testimonials.data('Peppermint');
+        $('.nav-toggle', $navbar).on('click', function(e) {
+          e.preventDefault();
 
-  $testimonials.on('mouseover', peppermint.pause).on('mouseout', peppermint.start); // BUG: Need specific selectors for each carousel
+          $navbar.toggleClass('open');
+        });
 
-  var navbar = require('./navbar.min.js');
+        $('nav > a', $navbar).on('click', function() {
+          $navbar.removeClass('open');
+        });
+  })();
 
-  function scrollTo(path) {
-    if (!path) return;
+  (function initialiseScrollIn() {
+    $('section:not(.hero) > *').addClass('hide').scrollIn({
+      classes: 'show fade-in-up'
+    });
+  })();
 
-    var $section = $('section.' + (path.replace('/', '') || 'hero'));
+  (function initialiseCarousels() {
+    $('.peppermint').Peppermint({
+      dots: true,
+      slideshow: true,
+      slideshowInterval: 5000,
+      speed: 500
+    }).each(function() {
+      var $this = $(this),
+          peppermint = $this.data('Peppermint');
 
-    if ($section.length) $(document.body).animate({
-      scrollTop: $section.offset().top
-    }, 750);
-  }
+      $this.on('mouseover', peppermint.pause).on('mouseout', peppermint.start);
+    });
+  })();
 
-  (function initialise() {
-    navbar('/');
+  (function initialiseRouting() {
+    function scrollTo(path) {
+      if (!path) return;
 
-    page('/accommodation/apartments', function(context, next) {
-      $.load('/partials/apartments', function() {
-        //var
+      var $section = $('section.' + (path.replace('/', '') || 'hero'));
 
-        if (typeof next === 'function') next(context);
+      if ($section.length) $(document.body).animate({
+        scrollTop: $section.offset().top
+      }, 750);
+    }
+
+    (function initialise() {
+      page('*', function(context) {
+        //console.log('404', arguments);
+
+        scrollTo(context.path);
       });
-    });
-    page('*', function(context) {
-      console.log('404', arguments);
-
-      scrollTo(context.path);
-    });
-    page();
+      page();
+    })();
   })();
 });

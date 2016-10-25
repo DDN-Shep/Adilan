@@ -7,6 +7,10 @@ html, body {
   height: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   position: relative;
   font-family: Raleway, helvetica, arial, sans-serif;
@@ -34,20 +38,11 @@ body {
   }
 }
 
-a, a img, li, li a {
+*[tabindex], a, a img, li, li a {
   outline: 0;
   border: 0;
   text-decoration: none;
   user-select: none;
-}
-
-nav {
-  ul, li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-  }
 }
 
 body {
@@ -71,13 +66,25 @@ body {
 }
 
 .navbar {
-  border-bottom: .2em solid #11DFC7;
+  position: fixed;
+  height: 100%;
+  width: 16em;
+  z-index: 9;
+  border: 0 solid #11DFC7;
+  border-right-width: .2em;
   background-color: rgba(0, 0, 0, .75);
+  transition: transform .5s ease;
+  transform: translateX(-16em);
+
+  @media (min-width: 750px) {
+    border-right-width: 0;
+    border-bottom-width: .2em;
+    height: auto;
+    width: 100%;
+    transform: translateX(0);
+  }
 
   a {
-    display: inline-block;
-    padding: .75em;
-    width: 100%;
     color: #11DFC7;
 
     &:hover {
@@ -86,25 +93,58 @@ body {
     }
   }
 
-  .nav-list {
-    width: 100%;
+  .nav-toggle {
+    position: absolute;
+    top: 0;
+    right: -3.7em;
+    padding: 1em;
+    border: 0 solid #11DFC7;
+    border-radius: 0 0 1em;
+    border-right-width: .2em;
+    border-bottom-width: .2em;
+    background-color: inherit;
+    transition: opacity .5s ease;
 
-    &:after {
-      content: '';
-      display: table;
-      clear: both;
+    &.nav-open {
+      opacity: 1;
+    }
+
+    &.nav-close {
+      opacity: 0;
+    }
+
+    @media (min-width: 750px) {
+      display: none;
     }
   }
 
-  .nav-item {
-    display: inline-block;
-    width: 100%;
-    padding: 0 1em;
+  nav {
+    > a {
+      display: block;
+      padding: 1em;
+    }
+
+    @media (min-width: 750px) {
+      > a {
+        display: inline-block;
+        padding: .75em 2em;
+      }
+
+      text-align: center;
+    }
   }
 
-  @media (min-width: 750px) {
-    .nav-item {
-      width: auto;
+  &.open {
+    transform: translateX(0);
+
+    .nav-toggle {
+      &.nav-open {
+        opacity: 0;
+      }
+
+      &.nav-close {
+        opacity: 1;
+      }
     }
   }
 }
@@ -134,10 +174,11 @@ section {
 
 .hero {
   position: relative;
-  background-image: url('/img/IMG-20161002-WA0003.jpg');
-  background-size: cover;
   background-attachment: fixed;
+  background-image: url('/img/IMG-20161002-WA0003.jpg');
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
   color: #fff;
   padding: 6em 0;
