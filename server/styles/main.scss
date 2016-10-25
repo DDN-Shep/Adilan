@@ -68,13 +68,13 @@ body {
 .navbar {
   position: fixed;
   height: 100%;
-  width: 16em;
+  width: 16.5em;
   z-index: 9;
   border: 0 solid #11DFC7;
   border-right-width: .2em;
   background-color: rgba(0, 0, 0, .75);
   transition: transform .5s ease;
-  transform: translateX(-16em);
+  transform: translateX(-16.6em);
 
   @media (min-width: 750px) {
     border-right-width: 0;
@@ -96,7 +96,7 @@ body {
   .nav-toggle {
     position: absolute;
     top: 0;
-    right: -3.7em;
+    right: -3.65em;
     padding: 1em;
     border: 0 solid #11DFC7;
     border-radius: 0 0 1em;
@@ -181,7 +181,7 @@ section {
   background-size: cover;
   text-align: center;
   color: #fff;
-  padding: 6em 0;
+  padding: 4em .6em 8em;
 
   .hero-title {
     display: inline-block;
@@ -189,22 +189,53 @@ section {
     background-color: rgba(0, 0, 0, .25);
     border-radius: 1em;
     text-shadow: 0 0 1em #000;
+
+    .heading {
+      font-size: 2.25em;
+    }
+
+    .description {
+      font-size: .9em;
+    }
   }
 
   .TA_cdsratingsonlynarrow {
     position: absolute;
     right: 2em;
     bottom: 2em;
+    transform: scale(.75);
+    transform-origin: bottom right;
   }
 
   .fb-like {
     position: absolute;
-    right: 14em;
+    right: 10em;
     bottom: 2em;
+    transform: scale(.95);
+    transform-origin: bottom right;
   }
 
   @media (min-width: 550px) {
     padding: 12em 0;
+
+    .TA_cdsratingsonlynarrow {
+      transform: scale(1);
+    }
+
+    .fb-like {
+      transform: scale(1);
+      right: 14em;
+    }
+
+    .hero-title {
+      .heading {
+        font-size: 4rem;
+      }
+
+      .description {
+        font-size: 1em;
+      }
+    }
   }
 }
 
@@ -261,10 +292,10 @@ section.welcome {
   }
 }
 
-.rc-anchor-light {
-  * {
-    background-color: rgba(255, 255, 255, .25);
-  }
+#recaptcha {
+  transform: scale(.75);
+  transform-origin: top left;
+  float: left;
 }
 
 section.testimonials {
@@ -315,14 +346,12 @@ section.contact-us   {
     }
   }
 
-  ul > li {
-    .fa {
-      left: auto;
-      right: -2.14285714em;
-    }
+  ul {
+    display: inline-block;
+    margin: auto;
 
-    &, a {
-      text-align: right;
+    li, a {
+      text-align: left;
     }
 
     a {
