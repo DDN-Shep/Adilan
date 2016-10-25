@@ -3,47 +3,72 @@ module.exports = function() {
 
   console.log('Calendar.js', arguments);
 
+  var animationend = 'animationend webkitAnimationEnd',
+      transitionend = 'transitionend webkitTransitionEnd';
+
   return (function initialise() {
     var checkIn, checkOut, numberOfMonths = [2, 3],
-        $calendar = $('.calendar').datepicker({
-          numberOfMonths: [2, 3],
-          prevText: '',
-          nextText: '',
-          beforeShowDay: function(date) {
-            date = moment(date);
+      $calendar = $('#calendar').datepicker({
+        numberOfMonths: numberOfMonths,
+        prevText: '',
+        nextText: '',
+        beforeShowDay: function(date) {
+          date = moment(date);
 
-            var now = moment(),
-                show = date.isAfter(now),
-                css = '';
+          var now = moment(),
+            show = date.isAfter(now),
+            css = '';
 
-            if (checkIn && checkOut && date.isSameOrAfter(checkIn) && date.isSameOrBefore(checkOut)) {
-              css = 'ui-datepicker-reserved';
+          if (checkIn && checkOut && date.isSameOrAfter(checkIn) && date.isSameOrBefore(checkOut)) {
+            css = 'ui-datepicker-reserved';
 
-              if (date.isSame(checkIn)) css += ' ui-datepicker-checkin';
-              if (date.isSame(checkOut)) css += ' ui-datepicker-checkout';
-            }
-
-            return [show, css];
-          },
-          onSelect: function(value) {
-            var date = moment($calendar.datepicker('getDate'));
-
-            if (checkIn && !checkOut && date.isSameOrAfter(checkIn))
-              checkOut = date;
-            else {
-              checkIn = date;
-              checkOut = null;
-            }
-
-            $('#check-in-date').text(checkIn ? checkIn.format('DD/MM/YYYY') : 'Choose a date');
-            $('#check-out-date').text(checkOut ? checkOut.format('DD/MM/YYYY') : 'Choose a date');
-          },
-          onChangeMonthYear: function() {
-            $calendar.addClass('fade-in');
+            if (date.isSame(checkIn)) css += ' ui-datepicker-checkin';
+            if (date.isSame(checkOut)) css += ' ui-datepicker-checkout';
           }
-        }).on('animationend', function() {
-          $calendar.removeClass('fade-in');
-        });
+
+          return [show, css];
+        },
+        onSelect: function(value) {
+          var date = moment($calendar.datepicker('getDate'));
+
+          if (checkIn && !checkOut && date.isSameOrAfter(checkIn))
+            checkOut = date;
+          else {
+            checkIn = date;
+            checkOut = null;
+          }
+
+          $('#check-in-date').text(checkIn ? checkIn.format('DD/MM/YYYY') : 'Choose a date');
+          $('#check-out-date').text(checkOut ? checkOut.format('DD/MM/YYYY') : 'Choose a date');
+        },
+        onChangeMonthYear: function() {
+          $calendar.addClass('fade-in');
+        }
+      }).on(animationend, function() {
+        $calendar.removeClass('fade-in');
+      });
+
+    function resize() {
+      var element = $('.ui-datepicker').get(0),
+        style = window.getComputedStyle(element).getPropertyValue('min-width'),
+        value;
+
+      switch (style) {
+        case '765px': value = [2, 3]; break;
+        case '510px': value = [2, 2]; break;
+        default: value = [2, 1]; break;
+      }
+
+      if (numberOfMonths !== value) {
+        if (checkIn) $calendar.datepicker('setDate', checkIn.toDate());
+
+        $calendar.datepicker('option', 'numberOfMonths', numberOfMonths = value);
+      }
+    }
+
+    $(window).on('resize', resize);
+
+    resize();
 
     return $calendar;
   })();
