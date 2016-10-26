@@ -37,8 +37,8 @@ html
     script(src='/js/scroll-in.min.js')
     script(src='/js/main.min.js')
 
-    include ./includes/google-recaptcha.pug
-    include ./includes/google-analytics.pug
+    script(src='https://google.com/recaptcha/api.js?onload=onRecaptchaLoaded&render=explicit', async, defer)
+    script(src='https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8', id='facebook-jssdk', async, defer)
+    script(src='https://tripadvisor.co.uk/WidgetEmbed-cdsratingsonlynarrow?border=true&shadow=false&locationId=1820970&display_version=2&uniq=001&lang=en_UK', async, defer)
 
-    script(src='https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8', id='facebook-jssdk')
-    script(src='https://tripadvisor.co.uk/WidgetEmbed-cdsratingsonlynarrow?border=true&shadow=false&locationId=1820970&display_version=2&uniq=001&lang=en_UK')
+    include ./includes/google-analytics.pug

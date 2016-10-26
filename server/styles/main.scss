@@ -45,6 +45,21 @@ body {
   user-select: none;
 }
 
+.container {
+  @media (min-width: 400px) {
+    width: 90%;
+  }
+
+  @media (min-width: 550px) {
+    width: 85%;
+    padding: 0;
+  }
+
+  @media (min-width: 750px) {
+    width: 80%;
+  }
+}
+
 body {
   > header, > main, > footer {
     position: relative;
@@ -300,6 +315,7 @@ section.welcome {
   transform: scale(.75);
   transform-origin: top left;
   float: left;
+  width: 225px;
 }
 
 section.testimonials {
@@ -352,7 +368,8 @@ section.contact-us   {
 
   ul {
     display: inline-block;
-    margin: auto;
+    //margin: auto;
+    white-space: nowrap;
 
     li, a {
       text-align: left;

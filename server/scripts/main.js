@@ -14,8 +14,6 @@ $(function() {
 
     (function initialise() {
       page('*', function(context) {
-        console.log('404', arguments);
-
         scrollTo(context.path);
       });
       page();
@@ -41,6 +39,17 @@ $(function() {
         $('nav > a', $navbar).on('click', function() {
           $navbar.removeClass('open');
         });
+  })();
+
+  (function initialiseRecaptcha() {
+    window.onRecaptchaLoaded = function() {
+      if (window.grecaptcha) window.grecaptcha.render('recaptcha', {
+        sitekey: '6LcMcwgUAAAAAHEA-qN8o77g_HY5y-QuDcZZwXER',
+        callback: function onRecaptchaVerified() {
+          console.log('Verified', arguments);
+        }
+      });
+    };
   })();
 
   (function initialiseCarousels() {
