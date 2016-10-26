@@ -3,9 +3,6 @@ module.exports = function() {
 
   console.log('Calendar.js', arguments);
 
-  var animationend = 'animationend webkitAnimationEnd',
-      transitionend = 'transitionend webkitTransitionEnd';
-
   return (function initialise() {
     var checkIn, checkOut, numberOfMonths = [2, 3],
       $calendar = $('#calendar').datepicker({
@@ -44,7 +41,7 @@ module.exports = function() {
         onChangeMonthYear: function() {
           $calendar.addClass('fade-in');
         }
-      }).on(animationend, function() {
+      }).on('animationend webkitAnimationEnd', function() {
         $calendar.removeClass('fade-in');
       });
 

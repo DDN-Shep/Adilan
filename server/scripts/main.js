@@ -1,6 +1,27 @@
 $(function() {
   'use strict';
 
+  (function initialiseRouting() {
+    function scrollTo(path) {
+      if (!path) return;
+
+      var $section = $('section.' + (path.replace('/', '') || 'hero'));
+
+      if ($section.length) $('html, body').animate({
+        scrollTop: $section.offset().top
+      }, 750);
+    }
+
+    (function initialise() {
+      page('*', function(context) {
+        console.log('404', arguments);
+
+        scrollTo(context.path);
+      });
+      page();
+    })();
+  })();
+
   (function initialiseNavbar() {
     var timer,
         $navbar = $('.navbar').on('focusout', function() {
@@ -22,12 +43,6 @@ $(function() {
         });
   })();
 
-  (function initialiseScrollIn() {
-    $('section:not(.hero) > *').addClass('hide').scrollIn({
-      classes: 'show fade-in-up'
-    });
-  })();
-
   (function initialiseCarousels() {
     $('.peppermint').Peppermint({
       dots: true,
@@ -42,24 +57,9 @@ $(function() {
     });
   })();
 
-  (function initialiseRouting() {
-    function scrollTo(path) {
-      if (!path) return;
-
-      var $section = $('section.' + (path.replace('/', '') || 'hero'));
-
-      if ($section.length) $(document.body).animate({
-        scrollTop: $section.offset().top
-      }, 750);
-    }
-
-    (function initialise() {
-      page('*', function(context) {
-        //console.log('404', arguments);
-
-        scrollTo(context.path);
-      });
-      page();
-    })();
+  (function initialiseScrollIn() {
+    $('section:not(.hero) > *').addClass('hide').scrollIn({
+      classes: 'show fade-in-up'
+    });
   })();
 });

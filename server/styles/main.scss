@@ -63,6 +63,10 @@ body {
     bottom: 1em;
     color: #fff;
   }
+
+  > main > section:not(.hero) > *:not(.hide):not(.show) {
+    visibility: hidden;
+  }
 }
 
 .navbar {
@@ -370,44 +374,100 @@ section.contact-us   {
   margin: 1.2rem 0;
 
   > .heading {
+    position: relative;
     height: 15em;
+    border-radius: 1em;
+    overflow: hidden;
+    cursor: pointer;
 
     &:before {
+      position: absolute;
       display: block;
       content: '';
       background-size: cover;
       background-repeat: no-repeat;
       background-position: 50% 50%;
       height: 100%;
+      width: 100%;
+    }
+
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: block;
+      text-align: center;
+      background-color: rgba(0, 0, 0, .75);
+      padding: .5em 0;
+      color: #11DFC7;
+    }
+
+    &:hover:after {
+      text-shadow: 0 0 1em #fff;
+      color: #fff;
     }
   }
+}
 
-  > .description {
+.card.apartments > .heading {
+  &:before {
+    background-image: url('/img/apartments.jpg');
+  }
+
+  &:after {
+    content: 'Adilan Apartments';
   }
 }
 
-.card.apartments > .heading:before {
-  background-image: url('/img/apartments.jpg');
+.card.villas > .heading {
+  &:before {
+    background-image: url('/img/villas.jpg');
+  }
+
+  &:after {
+    content: 'Adilan Villas';
+  }
 }
 
-.card.villas > .heading:before {
-  background-image: url('/img/villas.jpg');
+.card.melon-grove > .heading {
+  &:before {
+    background-image: url('/img/melon-grove.jpg');
+  }
+
+  &:after {
+    content: 'Melon Grove';
+  }
 }
 
-.card.melon-grove > .heading:before {
-  background-image: url('/img/melon-grove.jpg');
+.card.villa-ayberk > .heading {
+  &:before {
+    background-image: url('/img/villa-ayberk.jpg');
+  }
+
+  &:after {
+    content: 'Villa Ayberk';
+  }
 }
 
-.card.villa-ayberk > .heading:before {
-  background-image: url('/img/villa-ayberk.jpg');
+.card.villa-adil > .heading {
+  &:before {
+    background-image: url('/img/villa-adil.jpg');
+  }
+
+  &:after {
+    content: 'Villa Adil';
+  }
 }
 
-.card.villa-adil > .heading:before {
-  background-image: url('/img/villa-adil.jpg');
-}
+.card.restaurant > .heading {
+  &:before {
+    background-image: url('/img/restaurant.jpg');
+  }
 
-.card.restaurant > .heading:before {
-  background-image: url('/img/restaurant.jpg');
+  &:after {
+    content: 'Adilan Restaurant';
+  }
 }
 
 @media (min-width: 550px) {
