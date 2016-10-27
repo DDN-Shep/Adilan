@@ -9,12 +9,6 @@ module.exports = ((app) => {
       icon = path.join(client, '/favicon.ico'),
       index = path.join(client, '/index.html');
 
-  app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    if (next) next();
-  });
-
   app.use(favicon(icon));
   app.use(express.static(client));
 
