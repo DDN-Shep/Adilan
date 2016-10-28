@@ -46,7 +46,7 @@ $(function() {
       if (window.grecaptcha) window.grecaptcha.render('recaptcha', {
         sitekey: '6LcMcwgUAAAAAHEA-qN8o77g_HY5y-QuDcZZwXER',
         callback: function onRecaptchaVerified() {
-          console.log('Verified', arguments);
+          //console.log('Verified', arguments);
         }
       });
     };

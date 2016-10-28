@@ -1,0 +1,98 @@
+@charset 'UTF-8';
+
+@font-face {
+  font-family: 'adilan-fonts';
+  src:url('../fonts/adilan-fonts.eot');
+  src:url('../fonts/adilan-fonts.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/adilan-fonts.woff') format('woff'),
+    url('../fonts/adilan-fonts.ttf') format('truetype'),
+    url('../fonts/adilan-fonts.svg#adilan-fonts') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 'adilan-fonts';
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-lg {
+  font-size: 1.33333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.fa-2x {
+  font-size: 2em;
+}
+.fa-3x {
+  font-size: 3em;
+}
+.fa-4x {
+  font-size: 4em;
+}
+.fa-5x {
+  font-size: 5em;
+}
+.fa-fw {
+  width: 1.28571429em;
+  text-align: center;
+}
+.fa-ul {
+  padding-left: 0;
+  margin-left: 2.14285714em;
+  list-style-type: none;
+}
+.fa-ul > li {
+  position: relative;
+}
+.fa-li {
+  position: absolute;
+  left: -2.14285714em;
+  width: 2.14285714em;
+  top: 0.14285714em;
+  text-align: center;
+}
+.fa-li.fa-lg {
+  left: -1.85714286em;
+}
+.fa-border {
+  padding: .2em .25em .15em;
+  border: solid 0.08em #eeeeee;
+  border-radius: .1em;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}
+.fa-facebook-square:before {
+  content: '\61';
+}
+.fa-bars:before {
+  content: '\62';
+}
+.fa-times:before {
+  content: '\63';
+}
+.fa-envelope-o:before {
+  content: '\64';
+}
+.fa-phone:before {
+  content: '\65';
+}

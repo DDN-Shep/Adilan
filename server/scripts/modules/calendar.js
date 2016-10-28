@@ -1,8 +1,6 @@
 module.exports = function() {
   'use strict';
 
-  console.log('Calendar.js', arguments);
-
   return (function initialise() {
     var checkIn, checkOut, numberOfMonths = [2, 3],
       $calendar = $('#calendar').datepicker({

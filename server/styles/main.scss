@@ -1,5 +1,4 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Raleway:400,300,600');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css');
 
 html, body {
   padding: 0;
@@ -319,10 +318,10 @@ section.welcome {
 }
 
 section.testimonials {
-  background-image: url('/img/IMG-20160928-WA0005.jpg');
-  background-size: cover;
   background-attachment: fixed;
+  background-image: url('/img/IMG-20160928-WA0005.jpg');
   background-repeat: no-repeat;
+  background-size: cover;
   color: #fff;
   text-shadow: 0 0 1em #000;
 
@@ -346,11 +345,11 @@ section.testimonials {
 }
 
 section.contact-us   {
-  background-image: url('/img/IMG-20160928-WA0010.jpg');
-  background-size: cover;
   background-attachment: fixed;
-  background-repeat: no-repeat;
+  background-image: url('/img/IMG-20160928-WA0010.jpg');
   background-position: 75% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #fff;
   text-shadow: 0 0 1em #000;
 
@@ -368,7 +367,6 @@ section.contact-us   {
 
   ul {
     display: inline-block;
-    //margin: auto;
     white-space: nowrap;
 
     li, a {
@@ -500,10 +498,6 @@ section.contact-us   {
     outline: 0;
   }
 
-  &.ui-datepicker-multi {
-    //width: auto !important;
-  }
-
   td {
     a, span {
       border: 1px solid #fff;
@@ -536,10 +530,6 @@ section.contact-us   {
         }
       }
     }
-  }
-
-  .ui-datepicker-current-day {
-
   }
 
   .ui-datepicker-today {

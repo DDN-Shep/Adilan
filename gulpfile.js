@@ -18,7 +18,7 @@ let gulp = require('gulp'),
     path = require('path'),
     fs = require('fs'),
     historyApi = require('connect-history-api-fallback'),
-    browserSync = require('browser-sync').create();
+    browserSync = require('browser-sync');
 
 let settings = {
   url: 'http://adilanvillas.com',
@@ -50,6 +50,11 @@ gulp.task('images', () => {
 
   gulp.src('./server/images/**')
     .pipe(gulp.dest('./client/img'));
+});
+
+gulp.task('fonts', () => {
+  gulp.src('./server/fonts/**')
+    .pipe(gulp.dest('./client/fonts'));
 });
 
 gulp.task('scripts', ['eslint'], () => {
@@ -104,6 +109,10 @@ gulp.task('views', () => {
     .pipe(rename({
       basename: 'index'
     }))
+    .pipe(gulp.dest('./client'))
+    .pipe(rename({
+      basename: '200'
+    }))
     .pipe(gulp.dest('./client'));
 });
 
@@ -129,7 +138,7 @@ gulp.task('robots', ['sitemap'], () => {
 });
 
 gulp.task('browser-sync', () => {
-  browserSync.init(['./client/**'], {
+  browserSync.create().init(['./client/**'], {
     server: {
       baseDir: './client',
       middleware: [historyApi()]
@@ -163,6 +172,6 @@ gulp.task('package', () => {
     .pipe(gulp.dest(settings.zip.path));
 });
 
-gulp.task('build', ['images', 'scripts', 'styles', 'views', 'robots']);
+gulp.task('build', ['images', 'fonts', 'scripts', 'styles', 'views', 'robots']);
 
 gulp.task('default', ['build', 'watch', 'browser-sync']);
