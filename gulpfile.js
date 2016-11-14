@@ -110,6 +110,12 @@ gulp.task('views', () => {
       basename: 'index'
     }))
     .pipe(gulp.dest('./client'));
+
+  gulp.src('./server/views/partials/**/*.pug')
+    .pipe(pug({
+      pretty: settings.pretty
+    }))
+    .pipe(gulp.dest('./client/partials'));
 });
 
 gulp.task('redirects', () => {
@@ -142,7 +148,17 @@ gulp.task('browser-sync', () => {
   browserSync.create().init(['./client/**'], {
     server: {
       baseDir: './client',
-      middleware: [historyApi()]
+      middleware: [historyApi({
+        rewrites: [
+          {
+            from: /\/partials/,
+            to: function(context) {
+              return context.parsedUrl.pathname + '.html';
+            }
+          }
+        ]
+      })],
+      verbose: true
     }
   });
 });

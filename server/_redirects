@@ -1,2 +1,5 @@
-# Redirects paths
-/*    /index.html    200
+# 200s
+/welcome                        /index.html    200
+/testimonials                   /index.html    200
+/accommodation-and-restaurant   /index.html    200
+/contact-us                     /index.html    200

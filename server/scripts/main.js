@@ -6,8 +6,6 @@ $(function() {
 
     var routes = {
       '/surrounding-area': function() {
-        console.log('/surrounding-area');
-
         handleLoad();
       }
     };
@@ -27,7 +25,7 @@ $(function() {
     function handleState(e) {
       if (e && typeof e.preventDefault === 'function') e.preventDefault();
 
-      if (window.location === this.href) return;
+      //if (window.location === this.href) return;
 
       var $this = $(this),
           data = {
@@ -36,6 +34,8 @@ $(function() {
           };
 
       History.pushState(data, data.title, data.url);
+
+      return false;
     }
 
     function scrollTo(path) {
@@ -52,7 +52,7 @@ $(function() {
       var state = History.getState(),
           handle = routes[state.data.url];
 
-      if (typeof handle === 'function') $('main').load(state.url, function() {
+      if (typeof handle === 'function') $('main').load('/partials' + state.data.url, function() {
         $('a[href]').off('click', handleState).on('click', handleState);
 
         handle.apply(this, arguments);
