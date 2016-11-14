@@ -5,10 +5,9 @@
     "jquery": 1
   },
   'globals': {
+    'ga': true,
     'module': true,
     'moment': true,
-    'page': true,
-    'require': true,
     'toastr': true
   },
   'rules': {
