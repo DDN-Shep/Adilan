@@ -2,6 +2,42 @@ $(function() {
   'use strict';
 
   (function initialiseRouting() {
+    if (!History.enabled) return;
+
+    var routes = {
+      '/surrounding-area': function() {
+        console.log('/surrounding-area');
+
+        handleLoad();
+      }
+    };
+
+    function handleLoad() {
+      $('html, body').scrollTop(0);
+
+      if (typeof ga === 'function') {
+        ga('set', {
+          page: window.location.pathname,
+          title: document.title
+        });
+        ga('send', 'pageview');
+      }
+    }
+
+    function handleState(e) {
+      if (e && typeof e.preventDefault === 'function') e.preventDefault();
+
+      if (window.location === this.href) return;
+
+      var $this = $(this),
+          data = {
+            title: $this.attr('title') || $this.text() || document.title,
+            url: $this.attr('href')
+          };
+
+      History.pushState(data, data.title, data.url);
+    }
+
     function scrollTo(path) {
       if (!path) return;
 
@@ -12,12 +48,19 @@ $(function() {
       }, 750);
     }
 
-    (function initialise() {
-      page('*', function(context) {
-        scrollTo(context.path);
+    History.Adapter.bind(window, 'statechange', function() {
+      var state = History.getState(),
+          handle = routes[state.data.url];
+
+      if (typeof handle === 'function') $('main').load(state.url, function() {
+        $('a[href]').off('click', handleState).on('click', handleState);
+
+        handle.apply(this, arguments);
       });
-      page();
-    })();
+      else scrollTo(state.data.url);
+    });
+
+    $('a[href]').off('click', handleState).on('click', handleState);
   })();
 
   (function initialiseNavbar() {

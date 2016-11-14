@@ -109,10 +109,11 @@ gulp.task('views', () => {
     .pipe(rename({
       basename: 'index'
     }))
-    .pipe(gulp.dest('./client'))
-    .pipe(rename({
-      basename: '200'
-    }))
+    .pipe(gulp.dest('./client'));
+});
+
+gulp.task('redirects', () => {
+  gulp.src('./server/_redirects')
     .pipe(gulp.dest('./client'));
 });
 
@@ -172,6 +173,6 @@ gulp.task('package', () => {
     .pipe(gulp.dest(settings.zip.path));
 });
 
-gulp.task('build', ['images', 'fonts', 'scripts', 'styles', 'views', 'robots']);
+gulp.task('build', ['images', 'fonts', 'scripts', 'styles', 'views', 'redirects', 'robots']);
 
 gulp.task('default', ['build', 'watch', 'browser-sync']);
