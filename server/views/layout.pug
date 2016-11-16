@@ -8,7 +8,9 @@ html
     meta(name='author', content='Andrew Sheppard')
     meta(name='robots', content='index, follow')
 
-    title Adilan Villas &amp; Apartments
+    title
+      block title
+        | Adilan Villas &amp; Apartments
 
     link(rel='shortcut icon', href='favicon.ico')
     // TODO: link(rel='copyright', href='[[Adilan Villas & Apartments Copyright Url]]')
@@ -25,11 +27,7 @@ html
       include ./includes/navbar.pug
 
     main
-      include ./sections/hero.pug
-      include ./sections/welcome.pug
-      include ./sections/testimonials.pug
-      include ./sections/accommodation-and-restaurant.pug
-      include ./sections/contact.pug
+      block main
 
       footer &copy; 2017 Adilan Villas &amp; Apartments
 

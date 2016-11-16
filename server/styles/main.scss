@@ -78,7 +78,7 @@ body {
     color: #fff;
   }
 
-  > main > section:not(.hero) > *:not(.hide):not(.show) {
+  > main > section:not(.hero):not(.page) > *:not(.hide):not(.show) {
     visibility: hidden;
   }
 }
@@ -167,7 +167,7 @@ body {
   }
 }
 
-.page {
+.modal {
   background-color: rgba(255, 255, 255, .9);
   position: fixed;
   top: 4.25em;
@@ -587,6 +587,12 @@ section.contact-us   {
   opacity: 1;
 }
 
+.fade-out {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fade-out;
+}
+
 .fade-in {
   animation-duration: 1s;
   animation-fill-mode: both;
@@ -597,6 +603,16 @@ section.contact-us   {
   animation-duration: 1s;
   animation-fill-mode: both;
   animation-name: fade-in-up;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes fade-in {

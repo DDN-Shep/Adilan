@@ -22,7 +22,7 @@ let gulp = require('gulp'),
 
 let settings = {
   url: 'http://adilanvillas.com',
-  pretty: false,
+  pretty: true,
   package: path.join(__dirname, 'package.json'),
   config: path.join(__dirname, 'config.json'),
   zip: {
@@ -99,7 +99,7 @@ gulp.task('styles', () => {
 });
 
 gulp.task('views', () => {
-  gulp.src('./server/views/layout.pug')
+  gulp.src('./server/views/pages/**/*.pug')
     .pipe(data(function(file) {
       return require(settings.config);
     }))
@@ -107,7 +107,7 @@ gulp.task('views', () => {
       pretty: settings.pretty
     }))
     .pipe(rename({
-      basename: 'index'
+      dirname: ''
     }))
     .pipe(gulp.dest('./client'));
 
@@ -149,14 +149,16 @@ gulp.task('browser-sync', () => {
     server: {
       baseDir: './client',
       middleware: [historyApi({
-        rewrites: [
-          {
-            from: /\/partials/,
-            to: function(context) {
-              return context.parsedUrl.pathname + '.html';
-            }
+        rewrites: [{
+          from: /\/partials/,
+          to: function(context) {
+            console.log(context.parsedUrl)
+            return context.parsedUrl.pathname + '.html';
           }
-        ]
+        }, {
+          from: /\/surrounding-area/,
+          to: '/surrounding-area.html'
+        }]
       })],
       verbose: true
     }
